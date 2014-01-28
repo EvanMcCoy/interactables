@@ -1,0 +1,12 @@
+# maven
+/target
+
+# vim
+.*.sw[a-p]
+
+# eclipse
+/.classpath
+/.project
+/.settings
+
+/bin
