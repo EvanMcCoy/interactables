@@ -16,6 +16,9 @@ public interface Interactable {
 	 */
 	public String setName();
 	
+	/*
+	 * Gets a list of the InteractCommands to be executed by the portal.
+	 */
 	public List<InteractCommand> getCommands();
 	
 	/*
