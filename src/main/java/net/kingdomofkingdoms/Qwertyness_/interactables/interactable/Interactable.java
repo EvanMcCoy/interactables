@@ -2,6 +2,8 @@ package net.kingdomofkingdoms.Qwertyness_.interactables.interactable;
 
 import java.util.List;
 
+import net.kingdomofkingdoms.Qwertyness_.interactables.InteractablesPlugin;
+
 public interface Interactable {
 	
 	/*
@@ -64,4 +66,17 @@ public interface Interactable {
 	 * Sets the cooldown of the interacable via an int containing the cooldown variable in seconds
 	 */
 	public void setCooldown(int seconds);
+	
+	/*
+	 * Should return the same InteractablesPlugin instance that was used when registering your plugin with Interactables.  This will be
+	 * used to call the InteractablesManager.save() method.  The plugin instance is needed to inform Interatables which plugin data file
+	 * to save to.
+	 */
+	public InteractablesPlugin getPlugin();
+	
+	/*
+	 * Should be used to compile a HashMap<String, Object> of FileConfiguration paths and their values.  This HashMap can than be
+	 * passed to the InteractableManager.save() method to be saved into the corresponding data file provided by Interactables.
+	 */
+	public void save();
 }
