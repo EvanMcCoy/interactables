@@ -13,12 +13,6 @@ public interface Interactable {
 	public String getName();
 	
 	/*
-	 * Sets the name field of the interactable. Can be used to change the physical interactable of the Interactable instance to avoid
-	 * the creation of another instance, although this action is messy and not recommended.
-	 */
-	public String setName();
-	
-	/*
 	 * Gets a list of the InteractCommands to be executed by the portal.
 	 */
 	public List<InteractCommand> getCommands();

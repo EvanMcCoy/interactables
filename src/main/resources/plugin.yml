@@ -1,0 +1,9 @@
+name: Interactables
+main: net.kingdomofkingdoms.Qwertyness_.interactables.Interactables
+version: 1.0
+description: Interactables API
+author: Qwertyness
+
+commands:
+  interactable:
+    description: The base command for all Interactables plugins.

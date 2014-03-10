@@ -26,9 +26,8 @@ public class DataFile {
 	}
 	
 	public DataFile(Interactables plugin, File file) {
+		this.plugin = plugin;
 		this.file = file;
-		new YamlConfiguration();
-		this.config = YamlConfiguration.loadConfiguration(file);
 	}
 	
 	public void reload() {

@@ -19,6 +19,7 @@ public class InteractableManager {
 	
 	public InteractableManager(Interactables plugin) {
 		this.plugin = plugin;
+		this.interactables = new ArrayList<Interactable>();
 	}
 	
 	public boolean registerInteractable(Interactable interactable) {
@@ -34,16 +35,34 @@ public class InteractableManager {
 	}
 	
 	public boolean isRegistered(Interactable interactable) {
+		return this.isRegistered(interactable.getName());
+	}
+	public boolean isRegistered(String name) {
 		for (Interactable testInteractable : this.interactables) {
-			if (interactable.getName().equals(testInteractable.getName())) {
+			if (name.equals(testInteractable.getName())) {
 				return true;
 			}
 		}
 		return false;
 	}
 	
+	public Interactable getInteractable(String name) {
+		for (Interactable interactable : this.interactables) {
+			if (interactable.getName().equals(name)) {
+				return interactable;
+			}
+		}
+		return null;
+	}
+	
 	public List<Interactable> getInteractables() {
 		return this.interactables;
+	}
+	
+	public void saveAllInteractables() {
+		for(Interactable interactable : this.interactables) {
+			interactable.save();
+		}
 	}
 	
 	/*
@@ -56,8 +75,20 @@ public class InteractableManager {
 			if (testPlugin.getClass() == dataPlugin.getClass()) {
 				for(int counter = 0;counter < values.keySet().size();counter++) {
 					DataFile file = this.plugin.dataFiles.get(dataPlugin);
-					file.get().set(new ArrayList<String>(values.keySet()).get(counter), new ArrayList<Entry<String, Object>>().get(counter).getValue());
+					file.get().set(new ArrayList<String>(values.keySet()).get(counter), new ArrayList<Entry<String, Object>>(values.entrySet()).get(counter).getValue());
+					file.save();
 				}
+			}
+		}
+	}
+	
+	/*
+	 * Deletes an interactable from is plugin's data file.  This method does not unregister the interactable.
+	 */
+	public void deleteInteractable(InteractablesPlugin dataPlugin, String interactablePath) {
+		for (InteractablesPlugin testPlugin : this.plugin.getPlugins()) {
+			if (testPlugin.getClass() == dataPlugin.getClass()) {
+				this.plugin.dataFiles.get(dataPlugin).get().set(interactablePath, null);
 			}
 		}
 	}

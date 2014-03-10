@@ -10,6 +10,7 @@ import net.kingdomofkingdoms.Qwertyness_.interactables.command.Info;
 import net.kingdomofkingdoms.Qwertyness_.interactables.data.DataFile;
 import net.kingdomofkingdoms.Qwertyness_.interactables.interactable.InteractableManager;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -23,6 +24,7 @@ public class Interactables extends JavaPlugin implements InteractablesPlugin {
 	private InteractableManager interactableManager;
 	
 	public void onEnable() {
+		this.saveDefaultConfig();
 		this.getServer().getLogger().info("Initializing plugin list...");
 		this.plugins = new ArrayList<InteractablesPlugin>();
 		this.getServer().getLogger().info("Registering services...");
@@ -34,6 +36,10 @@ public class Interactables extends JavaPlugin implements InteractablesPlugin {
 		
 		// Register commands
 		this.commandHandler.registerCommand(new Info());
+	}
+	
+	public void onDisable() {
+		this.interactableManager.saveAllInteractables();
 	}
 	
 	public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) {
@@ -52,12 +58,17 @@ public class Interactables extends JavaPlugin implements InteractablesPlugin {
 	 */
 	public void registerPlugin(InteractablesPlugin plugin) {
 		plugins.add(plugin);
-		for (File file : this.getDataFolder().listFiles()) {
-			if (file.getName().equals(plugin.getName() + ".yml")) {
-				return;
+		try {
+			for (File file : this.getDataFolder().listFiles()) {
+				if (file.getName().equals(plugin.getName() + ".yml")) {
+					this.dataFiles.put(plugin, new DataFile(this, file));
+					return;
+				}
 			}
-		}
+		} catch(NullPointerException e) {}
+		
 		DataFile file = new DataFile(this, plugin.getName());
+		file.reload();
 		file.save();
 		dataFiles.put(plugin, file);
 	}

@@ -4,7 +4,7 @@ public enum InteractSender {
 	
 	PLAYER, CONSOLE;
 	
-	public InteractSender getInteractSender(String input) {
+	public static InteractSender getInteractSender(String input) {
 		if (input.equalsIgnoreCase("player")) {
 			return InteractSender.PLAYER;
 		}

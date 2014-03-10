@@ -6,7 +6,7 @@ import java.util.List;
 import org.bukkit.entity.Player;
 
 public class CommandHandler {
-	private List<CommandLabel> commands;
+	public List<CommandLabel> commands;
 	
 	/*
 	 * Do not create your own instance of CommandHandler to register commands.  Instead, aquire the official instance through the Interactables
