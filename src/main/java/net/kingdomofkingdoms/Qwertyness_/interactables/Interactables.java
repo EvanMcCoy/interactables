@@ -11,6 +11,7 @@ import net.kingdomofkingdoms.Qwertyness_.interactables.data.DataFile;
 import net.kingdomofkingdoms.Qwertyness_.interactables.interactable.InteractableManager;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -33,7 +34,7 @@ public class Interactables extends JavaPlugin implements InteractablesPlugin {
 		this.getServer().getServicesManager().register(Interactables.class, this, this, ServicePriority.Normal);
 		this.interactableManager = new InteractableManager(this);
 		this.getServer().getServicesManager().register(InteractableManager.class, this.interactableManager, this, ServicePriority.Normal);
-		
+		CooldownUtil.plugin = this;
 		// Register commands
 		this.commandHandler.registerCommand(new Info());
 	}
@@ -44,6 +45,10 @@ public class Interactables extends JavaPlugin implements InteractablesPlugin {
 	
 	public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) {
 		Player player = (Player) sender;
+		if (!(args.length > 0)) {
+			player.sendMessage(ChatColor.RED + "Too few arguments! Use /interactable help for a list of subcommands.");
+			return true;
+		}
 		if (command.getName().equalsIgnoreCase("interactable")) {
 			if (this.commandHandler.isRegistered(args[0])) {
 				this.commandHandler.onCommand(player, args);

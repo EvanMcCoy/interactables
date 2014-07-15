@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.kingdomofkingdoms.Qwertyness_</groupId>
   <artifactId>interactables</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
   <name>Interactables</name>
   <description>Interactables API to create executable objects in Minecraft Bukkit</description>
   
