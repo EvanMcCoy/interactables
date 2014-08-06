@@ -104,6 +104,9 @@ public class InteractableManager {
 		if (CooldownUtil.isCoolingDown(player.getName(), interactable.getName())) {
 			return false;
 		}
+		if (interactable.getUses() == 0) {
+			return true;
+		}
 		if (getUses(player, interactable) >= interactable.getUses()) {
 			return false;
 		}
