@@ -1,14 +1,14 @@
- package net.kingdomofkingdoms.Qwertyness_.interactables;
+ package com.qwertyness.interactables;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import net.kingdomofkingdoms.Qwertyness_.interactables.interactable.Interactable;
-
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitScheduler;
+
+import com.qwertyness.interactables.interactable.Interactable;
 
 public class CooldownUtil {
 	public static Interactables plugin;

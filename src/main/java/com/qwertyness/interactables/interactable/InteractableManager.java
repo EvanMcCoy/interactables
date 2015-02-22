@@ -1,4 +1,4 @@
-package net.kingdomofkingdoms.Qwertyness_.interactables.interactable;
+package com.qwertyness.interactables.interactable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,10 +7,10 @@ import java.util.Map.Entry;
 
 import org.bukkit.entity.Player;
 
-import net.kingdomofkingdoms.Qwertyness_.interactables.CooldownUtil;
-import net.kingdomofkingdoms.Qwertyness_.interactables.Interactables;
-import net.kingdomofkingdoms.Qwertyness_.interactables.InteractablesPlugin;
-import net.kingdomofkingdoms.Qwertyness_.interactables.data.DataFile;
+import com.qwertyness.interactables.CooldownUtil;
+import com.qwertyness.interactables.Interactables;
+import com.qwertyness.interactables.InteractablesPlugin;
+import com.qwertyness.interactables.data.DataFile;
 
 public class InteractableManager {
 	Interactables plugin;
@@ -117,6 +117,9 @@ public class InteractableManager {
 	 * Gets the current amount of uses a player has on an Interactable.
 	 */
 	public int getUses(Player player, Interactable interactable) {
+		if (interactable.getUses() < 1) {
+			return 0;
+		}
 		return this.plugin.dataFiles.get(interactable.getPlugin()).get().getInt("Uses." + interactable.getName() + "." + player.getUniqueId());
 	}
 	
@@ -126,6 +129,9 @@ public class InteractableManager {
 	 */
 	public void useInteractable(Player player, Interactable interactable) {
 		CooldownUtil.startCooldown(player, interactable);
+		if (interactable.getUses() < 1) {
+			return;
+		}
 		int currentUses = getUses(player, interactable);
 		this.plugin.dataFiles.get(interactable.getPlugin()).get().set("Uses." + interactable.getName() + "." + player.getUniqueId(), currentUses + 1);
 	}

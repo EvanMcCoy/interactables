@@ -1,4 +1,4 @@
-package net.kingdomofkingdoms.Qwertyness_.interactables.interactable;
+package com.qwertyness.interactables.interactable;
 
 import java.util.ArrayList;
 import java.util.HashMap;

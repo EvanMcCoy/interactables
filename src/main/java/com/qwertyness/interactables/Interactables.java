@@ -1,14 +1,9 @@
-package net.kingdomofkingdoms.Qwertyness_.interactables;
+package com.qwertyness.interactables;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import net.kingdomofkingdoms.Qwertyness_.interactables.command.CommandHandler;
-import net.kingdomofkingdoms.Qwertyness_.interactables.command.Info;
-import net.kingdomofkingdoms.Qwertyness_.interactables.data.DataFile;
-import net.kingdomofkingdoms.Qwertyness_.interactables.interactable.InteractableManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -18,13 +13,21 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.qwertyness.interactables.command.CommandHandler;
+import com.qwertyness.interactables.command.Help;
+import com.qwertyness.interactables.command.Info;
+import com.qwertyness.interactables.data.DataFile;
+import com.qwertyness.interactables.interactable.InteractableManager;
+
 public class Interactables extends JavaPlugin implements InteractablesPlugin {
 	public List<InteractablesPlugin> plugins = new ArrayList<InteractablesPlugin>();
 	public HashMap<InteractablesPlugin, DataFile> dataFiles = new HashMap<InteractablesPlugin, DataFile>();
 	private CommandHandler commandHandler;
 	private InteractableManager interactableManager;
+	public static Interactables instance;
 	
 	public void onEnable() {
+		instance = this;
 		this.saveDefaultConfig();
 		this.getServer().getLogger().info("Initializing plugin list...");
 		this.plugins = new ArrayList<InteractablesPlugin>();
@@ -37,6 +40,7 @@ public class Interactables extends JavaPlugin implements InteractablesPlugin {
 		CooldownUtil.plugin = this;
 		// Register commands
 		this.commandHandler.registerCommand(new Info());
+		this.commandHandler.registerCommand(new Help());
 	}
 	
 	public void onDisable() {

@@ -1,4 +1,4 @@
-package net.kingdomofkingdoms.Qwertyness_.interactables.interactable;
+package com.qwertyness.interactables.interactable;
 
 public enum InteractSender {
 	

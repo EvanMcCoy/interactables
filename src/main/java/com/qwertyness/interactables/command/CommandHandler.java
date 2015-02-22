@@ -1,4 +1,4 @@
-package net.kingdomofkingdoms.Qwertyness_.interactables.command;
+package com.qwertyness.interactables.command;
 
 import java.util.ArrayList;
 import java.util.List;

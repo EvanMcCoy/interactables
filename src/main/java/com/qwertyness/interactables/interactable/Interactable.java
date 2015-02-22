@@ -1,11 +1,11 @@
-package net.kingdomofkingdoms.Qwertyness_.interactables.interactable;
+package com.qwertyness.interactables.interactable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.ChatColor;
 
-import net.kingdomofkingdoms.Qwertyness_.interactables.InteractablesPlugin;
+import com.qwertyness.interactables.InteractablesPlugin;
 
 public abstract class Interactable {
 	protected InteractablesPlugin plugin;
