@@ -1,4 +1,4 @@
-package net.kingdomofkingdoms.Qwertyness_.interactables;
+package com.qwertyness.interactables;
 
 public interface InteractablesPlugin {
 	/*

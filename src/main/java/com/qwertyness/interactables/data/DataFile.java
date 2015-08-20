@@ -1,14 +1,14 @@
-package net.kingdomofkingdoms.Qwertyness_.interactables.data;
+package com.qwertyness.interactables.data;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;
 
-import net.kingdomofkingdoms.Qwertyness_.interactables.Interactables;
-
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+
+import com.qwertyness.interactables.Interactables;
 
 public class DataFile {
 	File file = null;

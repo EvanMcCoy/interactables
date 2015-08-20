@@ -1,4 +1,4 @@
-package net.kingdomofkingdoms.Qwertyness_.interactables.interactable;
+package com.qwertyness.interactables.interactable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,20 +54,8 @@ public class InteractCommand {
 	public static List<InteractCommand> toCommandList(List<String> input)  {
 		List<InteractCommand> output = new ArrayList<InteractCommand>();
 		for (String string : input) {
-			boolean onValue = false;
-			String key = "";
-			String value = "";
-			for (char character : string.toCharArray()) {
-				if (onValue) {
-					value += character;
-					continue;
-				}
-				if (character == ':') {
-					onValue = true;
-					continue;
-				}
-				key += character;
-			}
+			String key = string.substring(0, string.lastIndexOf(':'));
+			String value = string.substring(string.lastIndexOf(':')+1);
 			output.add(new InteractCommand(key, InteractSender.getInteractSender(value)));
 		}
 		return output;

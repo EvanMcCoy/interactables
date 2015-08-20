@@ -1,8 +1,8 @@
-package net.kingdomofkingdoms.Qwertyness_.interactables.command;
+package com.qwertyness.interactables.command;
 
 import org.bukkit.entity.Player;
 
-import net.kingdomofkingdoms.Qwertyness_.interactables.InteractablesPlugin;
+import com.qwertyness.interactables.InteractablesPlugin;
 
 public abstract class CommandLabel {
 	/*
@@ -31,7 +31,7 @@ public abstract class CommandLabel {
 	 */
 	protected String description;
 	/*
-	 * This field is used to inform Interactables which plugin the CommandLabel extension originates from.
+	 * Used to inform Interactables which plugin the CommandLabel extension originates from.
 	 */
 	protected InteractablesPlugin plugin;
 	
@@ -41,7 +41,7 @@ public abstract class CommandLabel {
 		this.plugin = plugin;
 	}
 	
-	protected CommandLabel(String name, String syntax, String description, InteractablesPlugin plugin) {
+	protected CommandLabel(String name, String description, String syntax, InteractablesPlugin plugin) {
 		this.name = name;
 		this.syntax = syntax;
 		this.description = description;
