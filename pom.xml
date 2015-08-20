@@ -15,9 +15,15 @@
   
   <dependencies>
     <dependency>
+<<<<<<< HEAD
       <groupId>org.bukkit</groupId>
       <artifactId>bukkit</artifactId>
       <version>1.8.4-R0.1-SNAPSHOT</version>
+=======
+      <groupId>org.spigotmc</groupId>
+      <artifactId>spigot-api</artifactId>
+      <version>1.8-R0.1-SNAPSHOT</version>
+>>>>>>> 02517e9e743be94568cc26fcca0a17e92c88b252
     </dependency>
   </dependencies>
   
